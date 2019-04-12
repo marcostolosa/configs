@@ -1,0 +1,15 @@
+[Unit]
+Description=Example Name Service
+
+[Service]
+Type=forking
+ExecStart=/full/path/to/file --load-config /full/path/config.json
+EnvironmentFile=-/etc/sysconfig/network
+Environment=SSH_AUTH_SOCK=%t/keyring/ssh
+PIDFile=/full/path/to/file.pid
+KillMode=process
+Restart=on-failure
+Restart=always
+
+[Install]
+WantedBy=default.target
